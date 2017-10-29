@@ -2741,7 +2741,6 @@ void demuxer_help(struct mp_log *log)
     int i;
 
     mp_info(log, "Available demuxers:\n");
-    mp_info(log, " demuxer:   info:\n");
     for (i = 0; demuxer_list[i]; i++) {
         mp_info(log, "%10s  %s\n",
                 demuxer_list[i]->name, demuxer_list[i]->desc);

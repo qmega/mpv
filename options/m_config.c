@@ -1095,6 +1095,8 @@ void m_config_print_option_list(const struct m_config *config, const char *name)
             MP_INFO(config, " [file]");
         if (opt->flags & M_OPT_FIXED)
             MP_INFO(config, " [no runtime changes]");
+        if (opt->flags & M_OPT_PARSABLE_HELP)
+            MP_INFO(config, " [parsable-help]");
         if (opt->type == &m_option_type_alias)
             MP_INFO(config, " for %s", (char *)opt->priv);
         if (opt->type == &m_option_type_cli_alias)

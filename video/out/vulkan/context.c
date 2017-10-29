@@ -87,7 +87,7 @@ done:
 #define OPT_BASE_STRUCT struct vulkan_opts
 const struct m_sub_options vulkan_conf = {
     .opts = (const struct m_option[]) {
-        OPT_STRING_VALIDATE("vulkan-device", device, 0, vk_validate_dev),
+        OPT_STRING_VALIDATE("vulkan-device", device, M_OPT_PARSABLE_HELP, vk_validate_dev),
         OPT_CHOICE("vulkan-swap-mode", swap_mode, 0,
                    ({"auto",        -1},
                    {"fifo",         VK_PRESENT_MODE_FIFO_KHR},

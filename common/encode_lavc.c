@@ -78,11 +78,11 @@ struct mux_stream {
 const struct m_sub_options encode_config = {
     .opts = (const m_option_t[]) {
         OPT_STRING("o", file, M_OPT_FIXED | CONF_NOCFG | CONF_PRE_PARSE | M_OPT_FILE),
-        OPT_STRING("of", format, M_OPT_FIXED),
+        OPT_STRING("of", format, M_OPT_FIXED | M_OPT_PARSABLE_HELP),
         OPT_KEYVALUELIST("ofopts", fopts, M_OPT_FIXED | M_OPT_HAVE_HELP),
-        OPT_STRING("ovc", vcodec, M_OPT_FIXED),
+        OPT_STRING("ovc", vcodec, M_OPT_FIXED | M_OPT_PARSABLE_HELP),
         OPT_KEYVALUELIST("ovcopts", vopts, M_OPT_FIXED | M_OPT_HAVE_HELP),
-        OPT_STRING("oac", acodec, M_OPT_FIXED),
+        OPT_STRING("oac", acodec, M_OPT_FIXED | M_OPT_PARSABLE_HELP),
         OPT_KEYVALUELIST("oacopts", aopts, M_OPT_FIXED | M_OPT_HAVE_HELP),
         OPT_FLOATRANGE("ovoffset", voffset, M_OPT_FIXED, -1000000.0, 1000000.0,
                        .deprecation_message = "--audio-delay (once unbroken)"),

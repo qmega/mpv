@@ -103,7 +103,7 @@ static const struct m_sub_options screenshot_conf = {
 #define OPT_BASE_STRUCT struct mp_vo_opts
 
 static const m_option_t mp_vo_opt_list[] = {
-    OPT_SETTINGSLIST("vo", video_driver_list, 0, &vo_obj_list, ),
+    OPT_SETTINGSLIST("vo", video_driver_list, M_OPT_PARSABLE_HELP, &vo_obj_list, ),
     OPT_SUBSTRUCT("sws", sws_opts, sws_conf, 0),
     OPT_FLAG("taskbar-progress", taskbar_progress, 0),
     OPT_FLAG("snap-window", snap_window, 0),
@@ -328,7 +328,7 @@ const m_option_t mp_opts[] = {
 
     // handled in m_config.c
     { "include", CONF_TYPE_STRING, M_OPT_FILE, .offset = -1},
-    { "profile", CONF_TYPE_STRING_LIST, 0, .offset = -1},
+    { "profile", CONF_TYPE_STRING_LIST, M_OPT_PARSABLE_HELP, .offset = -1},
     { "show-profile", CONF_TYPE_STRING, CONF_NOCFG | M_OPT_FIXED | M_OPT_NOPROP,
       .offset = -1},
     { "list-options", &m_option_type_dummy_flag, CONF_NOCFG | M_OPT_FIXED |
@@ -464,9 +464,9 @@ const m_option_t mp_opts[] = {
     // demuxer.c - select audio/sub file/demuxer
     OPT_PATHLIST("audio-files", audio_files, M_OPT_FILE),
     OPT_CLI_ALIAS("audio-file", "audio-files-append"),
-    OPT_STRING("demuxer", demuxer_name, 0),
-    OPT_STRING("audio-demuxer", audio_demuxer_name, 0),
-    OPT_STRING("sub-demuxer", sub_demuxer_name, 0),
+    OPT_STRING("demuxer", demuxer_name, M_OPT_PARSABLE_HELP),
+    OPT_STRING("audio-demuxer", audio_demuxer_name, M_OPT_PARSABLE_HELP),
+    OPT_STRING("sub-demuxer", sub_demuxer_name, M_OPT_PARSABLE_HELP),
     OPT_FLAG("demuxer-thread", demuxer_thread, 0),
     OPT_DOUBLE("demuxer-termination-timeout", demux_termination_timeout, 0),
     OPT_FLAG("demuxer-cache-wait", demuxer_cache_wait, 0),
@@ -490,8 +490,8 @@ const m_option_t mp_opts[] = {
     // force video/audio rate:
     OPT_DOUBLE("fps", force_fps, CONF_MIN, .min = 0),
     OPT_INTRANGE("audio-samplerate", force_srate, UPDATE_AUDIO, 0, 16*48000),
-    OPT_CHANNELS("audio-channels", audio_output_channels, UPDATE_AUDIO),
-    OPT_AUDIOFORMAT("audio-format", audio_output_format, UPDATE_AUDIO),
+    OPT_CHANNELS("audio-channels", audio_output_channels, UPDATE_AUDIO | M_OPT_PARSABLE_HELP),
+    OPT_AUDIOFORMAT("audio-format", audio_output_format, UPDATE_AUDIO | M_OPT_PARSABLE_HELP),
     OPT_DOUBLE("speed", playback_speed, M_OPT_RANGE, .min = 0.01, .max = 100.0),
 
     OPT_FLAG("audio-pitch-correction", pitch_correction, 0),
@@ -501,17 +501,17 @@ const m_option_t mp_opts[] = {
 
 // ------------------------- codec/vfilter options --------------------
 
-    OPT_SETTINGSLIST("af-defaults", af_defs, 0, &af_obj_list,
+    OPT_SETTINGSLIST("af-defaults", af_defs, M_OPT_PARSABLE_HELP, &af_obj_list,
                      .deprecation_message = "use --af + enable/disable flags"),
-    OPT_SETTINGSLIST("af", af_settings, 0, &af_obj_list, ),
-    OPT_SETTINGSLIST("vf-defaults", vf_defs, 0, &vf_obj_list,
+    OPT_SETTINGSLIST("af", af_settings, M_OPT_PARSABLE_HELP, &af_obj_list, ),
+    OPT_SETTINGSLIST("vf-defaults", vf_defs, M_OPT_PARSABLE_HELP, &vf_obj_list,
                      .deprecation_message = "use --vf + enable/disable flags"),
-    OPT_SETTINGSLIST("vf", vf_settings, 0, &vf_obj_list, ),
+    OPT_SETTINGSLIST("vf", vf_settings, M_OPT_PARSABLE_HELP, &vf_obj_list, ),
 
     OPT_SUBSTRUCT("", filter_opts, filter_conf, 0),
 
-    OPT_STRING("ad", audio_decoders, 0),
-    OPT_STRING("vd", video_decoders, 0),
+    OPT_STRING("ad", audio_decoders, M_OPT_PARSABLE_HELP),
+    OPT_STRING("vd", video_decoders, M_OPT_PARSABLE_HELP),
 
     OPT_STRING("audio-spdif", audio_spdif, 0),
 

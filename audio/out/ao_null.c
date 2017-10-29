@@ -244,8 +244,8 @@ const struct ao_driver audio_out_null = {
         OPT_FLOATRANGE("latency", latency_sec, 0, 0, 100),
         OPT_FLAG("broken-eof", broken_eof, 0),
         OPT_FLAG("broken-delay", broken_delay, 0),
-        OPT_CHANNELS("channel-layouts", channel_layouts, 0),
-        OPT_AUDIOFORMAT("format", format, 0),
+        OPT_CHANNELS("channel-layouts", channel_layouts, M_OPT_PARSABLE_HELP),
+        OPT_AUDIOFORMAT("format", format, M_OPT_PARSABLE_HELP),
         {0}
     },
     .options_prefix = "ao-null",

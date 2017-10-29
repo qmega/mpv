@@ -343,7 +343,8 @@ static int validate_error_diffusion_opt(struct mp_log *log, const m_option_t *op
 #define OPT_BASE_STRUCT struct gl_video_opts
 
 #define SCALER_OPTS(n, i) \
-    OPT_STRING_VALIDATE(n, scaler[i].kernel.name, 0, validate_scaler_opt), \
+    OPT_STRING_VALIDATE(n, scaler[i].kernel.name, M_OPT_PARSABLE_HELP,              \
+                        validate_scaler_opt),                              \
     OPT_FLOAT(n"-param1", scaler[i].kernel.params[0], 0),                  \
     OPT_FLOAT(n"-param2", scaler[i].kernel.params[1], 0),                  \
     OPT_FLOAT(n"-blur",   scaler[i].kernel.blur, 0),                       \
@@ -355,7 +356,8 @@ static int validate_error_diffusion_opt(struct mp_log *log, const m_option_t *op
     OPT_FLOATRANGE(n"-clamp", scaler[i].clamp, 0, 0.0, 1.0),               \
     OPT_FLOATRANGE(n"-radius",    scaler[i].radius, 0, 0.5, 16.0),         \
     OPT_FLOATRANGE(n"-antiring",  scaler[i].antiring, 0, 0.0, 1.0),        \
-    OPT_STRING_VALIDATE(n"-window", scaler[i].window.name, 0, validate_window_opt)
+    OPT_STRING_VALIDATE(n"-window", scaler[i].window.name, M_OPT_PARSABLE_HELP,     \
+                        validate_window_opt)
 
 const struct m_sub_options gl_video_conf = {
     .opts = (const m_option_t[]) {

@@ -2201,13 +2201,12 @@ static int parse_imgfmt(struct mp_log *log, const m_option_t *opt,
         return M_OPT_MISSING_PARAM;
 
     if (!bstrcmp0(param, "help")) {
-        mp_info(log, "Available formats:");
+        mp_info(log, "Available formats:\n");
         char **list = mp_imgfmt_name_list();
         for (int i = 0; list[i]; i++)
-            mp_info(log, " %s", list[i]);
+            mp_info(log, " %s\n", list[i]);
         if (accept_no)
-            mp_info(log, " no");
-        mp_info(log, "\n");
+            mp_info(log, " no\n");
         talloc_free(list);
         return M_OPT_EXIT;
     }
@@ -2289,10 +2288,9 @@ static int parse_afmt(struct mp_log *log, const m_option_t *opt,
         return M_OPT_MISSING_PARAM;
 
     if (!bstrcmp0(param, "help")) {
-        mp_info(log, "Available formats:");
+        mp_info(log, "Available formats:\n");
         for (int i = 1; i < AF_FORMAT_COUNT; i++)
-            mp_info(log, " %s", af_fmt_to_str(i));
-        mp_info(log, "\n");
+            mp_info(log, " %s\n", af_fmt_to_str(i));
         return M_OPT_EXIT;
     }
 
